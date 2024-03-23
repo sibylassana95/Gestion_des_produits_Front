@@ -1,47 +1,70 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <div class="card p-4 shadow-lg rounded">
-        <div class="card-body">
-          <img src="assets/images/logosagam.jpg" alt="Logo" class="mx-auto d-block mb-4" style="height: 50px;">
-          <div class="alert alert-danger" *ngIf="!enabled">
-            <strong>Utilisateur désactivé!</strong>
-            <p>Veuillez activer votre compte.. <a routerLink="/verifEmail" class="alert-link">Activation </a></p>
-          </div>
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col md="8">
+        <c-card-group>
+          <c-card class="p-4">
+            <span *ngIf="myForm.controls['username'].hasError('required') && myForm.controls['username'].touched"
+              class="text-danger">Nom d'utilisateur est obligatoire</span>
+            <span *ngIf="myForm.controls['password'].hasError('required') && myForm.controls['password'].touched"
+              class="text-danger">Mot de passe est obligatoire</span>
+            <c-card-body>
 
-          <form [formGroup]="myForm" (keydown.enter)="$event.preventDefault(); onLoggedin()">
-            <div class="mb-3">
-              <label for="username" class="form-label">Nom Utilisateur :</label>
-              <input type="text" id="username" required="" name="username" class="form-control"
-                formControlName="username" [(ngModel)]="user.username">
-              <span *ngIf="myForm.controls['username'].hasError('required') && myForm.controls['username'].touched"
-                class="text-danger">Nom d'utilisateur est obligatoire</span>
-            </div>
+              <form [formGroup]="myForm" (keydown.enter)="$event.preventDefault(); onLoggedin()" cForm>
+                <h1>Connexion</h1>
+                <p class="text-medium-emphasis">Connectez-vous à votre compte</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input id="username" autoComplete="username" cFormControl placeholder="Username"
+                    formControlName="username" [(ngModel)]="user.username" /> </c-input-group>
 
-            <div class="mb-3">
-              <label for="password" class="form-label">Mot de passe :</label>
-              <div class="input-group">
-                <input type="{{ passwordVisibility ? 'text' : 'password' }}" id="password" name="password"
-                  formControlName="password" [(ngModel)]="user.password" class="form-control"> &nbsp;
-                <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
-                  <i class="fa" [ngClass]="{ 'fa-eye': passwordVisibility, 'fa-eye-slash': !passwordVisibility }"></i>
+                <c-input-group class="mb-4">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input autoComplete="current-password" cFormControl placeholder="Password"
+                    type="{{ passwordVisibility ? 'text' : 'password' }}" id="password" formControlName="password"
+                    [(ngModel)]="user.password" />
+                  <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                    <i class="fa" [ngClass]="{ 'fa-eye': passwordVisibility, 'fa-eye-slash': !passwordVisibility }"></i>
+                  </button>
+                </c-input-group>
+                <p class="text-left">
+                  <a routerLink="/resetmdp">Mot de passe oublié?</a>
+                </p>
+                <c-row>
+                  <c-col xs="6">
+                    <button [disabled]="myForm.invalid" (click)="onLoggedin()" cButton class="px-4" color="primary">
+                      Connexion
+                    </button>
+                  </c-col>
+                </c-row>
+                <c-row>
+
+
+
+
+                </c-row>
+              </form>
+            </c-card-body>
+          </c-card>
+          <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
+            <c-card-body class="text-center">
+              <div>
+                <h2>Inscription</h2>
+                <p>
+                  Vous n'avez pas de compte?
+                </p>
+                <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
+                  s'inscrire maintenant
                 </button>
               </div>
-              <span *ngIf="myForm.controls['password'].hasError('required') && myForm.controls['password'].touched"
-                class="text-danger">Mot de passe est obligatoire</span>
-              <p class="text-left mt-2">
-                <a routerLink="/resetmdp">Mot de passe oublié?</a>
-              </p>
-            </div>
-            <div class="text-center mt-3">
-              <button type="button" [disabled]="myForm.invalid" (click)="onLoggedin()"
-                class="btn bnt">Connexion</button>
-            </div>
-            <p class="mt-3 text-center">Vous n'avez pas de compte? <a routerLink="/register"
-                class="text-primary">S'inscrire </a></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+            </c-card-body>
+          </c-card>
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
 </div>
