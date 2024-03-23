@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private titleService: Title,
-    private iconSetService: IconSetService
+    private iconSetService: IconSetService,
+    public authService: AuthService
   ) {
     titleService.setTitle(this.title);
     // iconSet singleton
@@ -28,5 +30,19 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+    this.authService.loadToken();
+    this.authService.decodeJWT();
+
+    this.authService.isloggedIn = this.authService.token != null;
+
+    if (typeof localStorage !== 'undefined') {
+      this.authService.loggedUser = localStorage.getItem('loggedUser') || '';
+      this.authService.roles = localStorage.getItem('roles')?.split(',') || [];
+    }
+    this.authService.loadToken();
+
+    if (!this.authService.isloggedIn) {
+      this.router.navigate(['/login']);
+    }
   }
 }

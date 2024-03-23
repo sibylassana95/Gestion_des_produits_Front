@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   login(user: User) {
-    return this.http.post<User>(environment.apiURL + '/login', user, {
+    return this.http.post<User>(environment.apiURL + '/api/login', user, {
       observe: 'response',
     });
   }
