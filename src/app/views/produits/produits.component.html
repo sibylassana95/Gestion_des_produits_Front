@@ -3,22 +3,21 @@
     <c-card class="mb-4">
       <c-card-header>Users</c-card-header>
       <c-card-body>
+
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
           <thead cTableColor="light">
             <tr>
-              <th class="text-center">
-                <svg cIcon name="cilPeople"></svg>
-              </th>
+
               <th>Nom produit</th>
               <th class="text-center">Prix</th>
               <th>Date Creation</th>
+              <th>Image</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let produit of data; index as i">
-              <td class="text-center">
-                <c-avatar size="md" src="{{produit.imageStr}}"></c-avatar>
-              </td>
+
+
               <td>
                 <div>{{ produit.nomProduits }}</div>
                 <div class="small text-medium-emphasis text-nowrap">
@@ -36,6 +35,8 @@
                 <div class="small text-medium-emphasis text-nowrap">
 
                 </div>
+              </td>
+              <td><img class="card-img-top img-responsive" src="{{produit.imageStr}}" style="height :50px;width:100px">
               </td>
             </tr>
           </tbody>

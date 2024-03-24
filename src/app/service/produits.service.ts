@@ -1,10 +1,14 @@
 import { Produit } from './../models/produits.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment.development';
 import { Image } from './../models/image.model';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -44,12 +48,14 @@ export class ProduitsService {
   uploadImage(file: File, filename: string): Observable<Image> {
     const imageFormData = new FormData();
     imageFormData.append('image', file, filename);
-    const url = `${environment.apiURL + 'image/upload'}`;
+    const url = `${environment.apiURL + '/api/image/upload'}`;
     return this.http.post<Image>(url, imageFormData);
   }
 
   loadImage(id: number): Observable<Image> {
-    const url = `${environment.apiURL + 'image/get/info'}/${id}`;
-    return this.http.get<Image>(url);
+    const url = `${environment.apiURL + '/api/image/get/info'}/${id}`;
+    return this.http.get<Image>(url, {
+      headers: { Accept: 'application/json' },
+    });
   }
 }
