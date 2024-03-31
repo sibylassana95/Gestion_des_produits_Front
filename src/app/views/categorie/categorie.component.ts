@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class CategorieComponent implements OnInit {
   categories?: Categorie[];
   icons = freeSet;
-
+  searchTerm: any;
   constructor(private produitService: ProduitsService) {}
 
   ngOnInit(): void {
@@ -41,5 +41,14 @@ export class CategorieComponent implements OnInit {
         });
       }
     });
+  }
+  filteredData(): Categorie[] {
+    if (!this.categories || !this.searchTerm) {
+      return this.categories || [];
+    } else {
+      return this.categories.filter((produit: Categorie) =>
+        produit.nomCat.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 }

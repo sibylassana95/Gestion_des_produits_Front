@@ -23,9 +23,15 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { CategorieRoutingModule } from './categorie-routing.module';
 import { CategorieComponent } from './categorie.component';
+import { AddCategorieComponent } from './add-categorie/add-categorie.component';
+import { UpdateCategorieComponent } from './update-categorie/update-categorie.component';
 
 @NgModule({
-  declarations: [CategorieComponent],
+  declarations: [
+    CategorieComponent,
+    AddCategorieComponent,
+    UpdateCategorieComponent,
+  ],
   imports: [
     CommonModule,
     CategorieRoutingModule,

@@ -18,6 +18,7 @@ export class ProduitsComponent implements OnInit {
   icons = freeSet;
   totalProduits: number = 0;
   totalcategories: number = 0;
+  searchTerm: any;
 
   constructor(private produitService: ProduitsService) {}
 
@@ -66,5 +67,16 @@ export class ProduitsComponent implements OnInit {
         });
       }
     });
+  }
+  filteredData(): Produit[] {
+    if (!this.data || !this.searchTerm) {
+      return this.data || [];
+    } else {
+      return this.data.filter((produit: Produit) =>
+        produit.nomProduits
+          .toLowerCase()
+          .includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 }

@@ -1,1 +1,20 @@
-<p>update-categorie works!</p>
+<c-card class="p-4 mb-4">
+  <form cForm class="row g-3" (ngSubmit)="updateCategorie()">
+    <c-col md="6">
+      <label cLabel for="nomProduits">Nom </label>
+      <input cFormControl [(ngModel)]="currentCategorie.nomCat" id="nomCat" name="nomCat" type="text"
+        class="form-control rounded-pill" />
+    </c-col>
+    <c-col md="6">
+      <label cLabel for="prixProduits">Description</label>
+      <textarea cFormControl rows="1" [(ngModel)]="currentCategorie.descriptionCat" id="descriptionCat"
+        name="descriptionCat" class="form-control rounded-pill"></textarea>
+    </c-col>
+
+    <c-col xs="12" class="d-flex justify-content-end">
+      <button cButton type="submit" color="primary" class="btn btn-primary rounded-pill">Modifier</button>
+      <button cButton type="button" color="danger" routerLink="/categories"
+        class="btn btn-danger rounded-pill ms-2">Annuler</button>
+    </c-col>
+  </form>
+</c-card>

@@ -1,6 +1,10 @@
+<c-row class="mb-4">
+  <c-col sm="4" xl="3">
+    <input type="text" class="form-control" placeholder="Rechercher une categorie..." [(ngModel)]="searchTerm">
+  </c-col>
+</c-row>
 <c-row>
   <c-col xs>
-
     <c-card class="mb-4">
       <c-card-header>Listes des Categories
       </c-card-header>
@@ -17,7 +21,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let produit of categories; index as i">
+            <tr *ngFor="let produit of filteredData(); index as i">
+
 
 
               <td>
@@ -31,7 +36,7 @@
 
 
               <td>
-                <a [routerLink]="['/produits/update',produit.idCat]"><svg [cIcon]="icons.cilPen" size="xl"
+                <a [routerLink]="['/categories/update',produit.idCat]"><svg [cIcon]="icons.cilPen" size="xl"
                     title="pen"></svg></a>
                 <a (click)="supprimerCategorie(produit)"><svg [cIcon]="icons.cilTrash" size="xl"
                     title="trash"></svg></a>

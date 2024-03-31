@@ -24,9 +24,13 @@
     </c-widget-stat-a>
   </c-col>
 </c-row>
+<c-row class="mb-4">
+  <c-col sm="4" xl="3">
+    <input type="text" class="form-control" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm">
+  </c-col>
+</c-row>
 <c-row>
   <c-col xs>
-
     <c-card class="mb-4">
       <c-card-header>Listes des produits
       </c-card-header>
@@ -44,7 +48,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let produit of data; index as i">
+            <tr *ngFor="let produit of filteredData(); index as i">
 
 
               <td>

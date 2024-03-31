@@ -1,1 +1,22 @@
-<p>add-categorie works!</p>
+<c-card class="p-4 mb-4">
+  <form cForm class="row g-3" [formGroup]="myForm" (keydown.enter)="$event.preventDefault(); addCategorie()">
+    <c-col md="6">
+      <label cLabel for="nomCat">Nom</label>
+      <input cFormControl [(ngModel)]="newCategorie.nomCat" id="nomCat" name="nomCat" type="text"
+        formControlName="nomCat" placeholder="Entrez le nom du categorie" class="form-control rounded-pill" />
+    </c-col>
+    <c-col md="6">
+      <label cLabel for="descriptionCat">Description</label>
+      <textarea [(ngModel)]="newCategorie.descriptionCat" id="descriptionCat" cFormControl id="descriptionCat"
+        name="descriptionCat" rows="1" placeholder="Entrez la description" formControlName="descriptionCat"
+        class="form-control rounded-pill"></textarea>
+    </c-col>
+
+    <c-col xs="12" class="d-flex justify-content-end">
+      <button cButton type="submit" color="primary" [disabled]="myForm.invalid" (click)="addCategorie()"
+        class="btn btn-primary rounded-pill">Valider</button>
+      <button cButton type="button" color="danger" routerLink="/categories"
+        class=" btn btn-danger rounded-pill ms-2">Annuler</button>
+    </c-col>
+  </form>
+</c-card>

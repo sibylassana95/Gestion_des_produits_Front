@@ -69,7 +69,7 @@ export class ProduitsService {
 
   loadImage(id: number): Observable<Image> {
     const url = `${this.baseUrl + '/image/get/info'}/${id}`;
-    return this.http.get<Image>(url, httpOptions);
+    return this.http.get<Image>(url);
   }
   listeCategories(): Observable<Categorie[]> {
     return this.http.get(`${this.baseUrl + '/categorie/all'}`).pipe(
@@ -80,5 +80,15 @@ export class ProduitsService {
   supprimerCategorie(id: number) {
     const url = `${this.baseUrl + '/categorie/del'}/${id}`;
     return this.http.delete(url);
+  }
+  ajouterCategorie(app: Categorie): Observable<Categorie> {
+    return this.http.post<Categorie>(this.baseUrl + '/categorie/add', app);
+  }
+  consulterCategorie(id: number): Observable<Categorie> {
+    const url = `${this.baseUrl}/categorie/getbyid/${id}`;
+    return this.http.get<Categorie>(url);
+  }
+  updateCategorie(app: Categorie): Observable<Categorie> {
+    return this.http.put<Categorie>(this.baseUrl + '/categorie/update', app);
   }
 }
