@@ -33,7 +33,9 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/scss/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.min.css"
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/@coreui/coreui/dist/css/coreui.css",
+              "node_modules/@coreui/icons/css/all.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": ["chart.js"]

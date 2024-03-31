@@ -1,0 +1,40 @@
+<form cForm class="row g-3" [formGroup]="myForm" (keydown.enter)="$event.preventDefault(); addProduit()">
+  <c-col md="6">
+    <label cLabel for="nomProduits">nomProduits</label>
+    <input cFormControl [(ngModel)]="newProduit.nomProduits" id="nomProduits" name="nomProduits" type="text"
+      formControlName="nomProduits" />
+  </c-col>
+  <c-col md="6">
+    <label cLabel for="prixProduits">prixProduits</label>
+    <input cFormControl [(ngModel)]="newProduit.prixProduits" id="prixProduits" name="prixProduits" type="number"
+      formControlName="prixProduits" />
+  </c-col>
+  <c-col xs="6">
+    <label cLabel for="dateCreation">dateCreation</label>
+    <input cFormControl [(ngModel)]="newProduit.dateCreation" id="dateCreation" type="date" name="dateCreation"
+      placeholder="date" formControlName="dateCreation" />
+  </c-col>
+  <c-col xs="6">
+
+    <label cLabel for="image">
+      image
+    </label>
+    <input cFormControl id="image" name="image" type="file" (change)="onImageUpload($event)" formControlName="image" />
+
+  </c-col>
+  <c-col xs="6">
+    <label>Categorie</label>
+    <select aria-label="Categorie" cSelect id="idCat" name="idCat" [(ngModel)]="newIdCat" formControlName="idCat">
+      <option *ngFor="let cat of categories" [value]="cat.idCat">
+        {{cat.nomCat}}
+      </option>
+    </select>
+  </c-col>
+
+  <c-col xs="8 mb-4">
+    <button cButton type="submit" color="dark" [disabled]="myForm.invalid" (click)="addProduit()">Valider</button>
+    &nbsp;&nbsp;
+    <button cButton type="button" color="danger" routerLink="/produits">Annuler</button>
+  </c-col>
+
+</form>

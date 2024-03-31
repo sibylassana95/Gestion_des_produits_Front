@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produit } from '../../models/produits.model';
 import { ProduitsService } from '../../service/produits.service';
 import { Image } from '../../models/image.model';
+import { freeSet } from '@coreui/icons';
 
 @Component({
   selector: 'app-produits',
@@ -12,7 +13,7 @@ import { Image } from '../../models/image.model';
 })
 export class ProduitsComponent implements OnInit {
   data?: Produit[];
-
+  icons = freeSet;
   constructor(private produitService: ProduitsService) {}
 
   ngOnInit(): void {

@@ -1,7 +1,14 @@
 <c-row>
+  <c-col xs="12">
+    <button cButton class="mb-3 right" type="submit">
+      Ajouter un produits
+    </button>
+  </c-col>
   <c-col xs>
+
     <c-card class="mb-4">
-      <c-card-header>Listes des produits</c-card-header>
+      <c-card-header>Listes des produits
+      </c-card-header>
       <c-card-body>
 
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
@@ -12,6 +19,7 @@
               <th>Prix</th>
               <th>Date Creation</th>
               <th>Image</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -20,23 +28,24 @@
 
               <td>
                 <div>{{ produit.nomProduits }}</div>
-                <div class="small text-medium-emphasis text-nowrap">
 
-                </div>
               </td>
               <td>
                 <div>{{ produit.prixProduits }}</div>
-                <div class="small text-medium-emphasis text-nowrap">
 
-                </div>
               </td>
               <td>
                 <div>{{ produit.dateCreation}}</div>
-                <div class="small text-medium-emphasis text-nowrap">
 
-                </div>
               </td>
               <td><img class="card-img-top img-responsive" src="{{produit.imageStr}}" style="height :50px;width:100px">
+              </td>
+
+              <td><a routerLink="/produits/add-produits"><svg [cIcon]="icons.cilPlus" size="xl" color="info"
+                    title="plus"></svg></a>
+                <a href=""><svg [cIcon]="icons.cilPen" size="xl" title="plus"></svg></a>
+                <a href=""><svg [cIcon]="icons.cilTrash" size="xl" title="plus"></svg></a>
+
               </td>
             </tr>
           </tbody>

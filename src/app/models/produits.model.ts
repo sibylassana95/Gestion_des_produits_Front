@@ -1,3 +1,4 @@
+import { Categorie } from './categorie.model';
 import { Image } from './image.model';
 export class Produit {
   idProduits!: number;
@@ -6,4 +7,5 @@ export class Produit {
   dateCreation!: Date;
   image!: Image;
   imageStr!: string;
+  categorie!: Categorie;
 }

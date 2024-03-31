@@ -18,8 +18,9 @@ import { ProduitsComponent } from './produits.component';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { WidgetsModule } from '../widgets/widgets.module';
+import { AddProduitComponent } from './add-produit/add-produit.component';
 @NgModule({
-  declarations: [ProduitsComponent],
+  declarations: [ProduitsComponent, AddProduitComponent],
   imports: [
     CommonModule,
     ProduitsRoutingModule,

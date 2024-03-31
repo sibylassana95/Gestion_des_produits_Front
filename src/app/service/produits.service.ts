@@ -5,6 +5,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment.development';
 import { Image } from './../models/image.model';
+import { Categorie } from '../models/categorie.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -13,7 +14,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ProduitsService {
-  private baseUrl: string = `${environment.apiURL}/api/produits/all`;
+  private baseUrl: string = `${environment.apiURL}/api`;
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   public handleError(error: any): Observable<never> {
@@ -39,10 +40,13 @@ export class ProduitsService {
   }
 
   getAllProduits(): Observable<Produit[]> {
-    return this.http.get(`${this.baseUrl}`).pipe(
+    return this.http.get(`${this.baseUrl + '/produits/all'}`).pipe(
       map((response) => this.handleResponse<Produit[]>(response)),
       catchError((error) => this.handleError(error))
     );
+  }
+  ajouterProduits(app: Produit): Observable<Produit> {
+    return this.http.post<Produit>(this.baseUrl + '/produits/addprod', app);
   }
 
   uploadImage(file: File, filename: string): Observable<Image> {
@@ -57,5 +61,11 @@ export class ProduitsService {
     return this.http.get<Image>(url, {
       headers: { Accept: 'application/json' },
     });
+  }
+  listeCategories(): Observable<Categorie[]> {
+    return this.http.get(`${this.baseUrl + '/categorie/all'}`).pipe(
+      map((response) => this.handleResponse<Categorie[]>(response)),
+      catchError((error) => this.handleError(error))
+    );
   }
 }
