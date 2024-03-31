@@ -5,12 +5,15 @@ import {
   ButtonGroupModule,
   ButtonModule,
   CardModule,
+  DropdownModule,
   FormModule,
   GridModule,
   NavModule,
   ProgressModule,
+  SharedModule,
   TableModule,
   TabsModule,
+  WidgetModule,
 } from '@coreui/angular';
 import { ProduitsRoutingModule } from './produits-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +22,7 @@ import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { AddProduitComponent } from './add-produit/add-produit.component';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 @NgModule({
   declarations: [ProduitsComponent, AddProduitComponent],
   imports: [
@@ -41,6 +45,16 @@ import { AddProduitComponent } from './add-produit/add-produit.component';
     AvatarModule,
     TableModule,
     WidgetsModule,
+    GridModule,
+    WidgetModule,
+    IconModule,
+    DropdownModule,
+    SharedModule,
+    ButtonModule,
+    CardModule,
+    DocsComponentsModule,
+    ProgressModule,
+    ChartjsModule,
   ],
 })
 export class ProduitsModule {}

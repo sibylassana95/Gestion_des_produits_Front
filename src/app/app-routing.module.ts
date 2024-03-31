@@ -10,14 +10,14 @@ import { RegisterComponent } from './views/pages/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'produits',
     pathMatch: 'full',
   },
   {
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home',
+      title: 'Accueil',
     },
     children: [
       {
@@ -111,7 +111,7 @@ const routes: Routes = [
       title: 'Register Page',
     },
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'produits' },
 ];
 
 @NgModule({
