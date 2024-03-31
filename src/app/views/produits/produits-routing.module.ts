@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProduitsComponent } from './produits.component';
 import { AddProduitComponent } from './add-produit/add-produit.component';
+import { UpdateProduitComponent } from './update-produit/update-produit.component';
 
 const routes: Routes = [
   {
@@ -12,10 +13,17 @@ const routes: Routes = [
     },
   },
   {
-    path: 'add-produits',
+    path: 'add',
     component: AddProduitComponent,
     data: {
       title: 'Ajouter produit',
+    },
+  },
+  {
+    path: 'update/:id',
+    component: UpdateProduitComponent,
+    data: {
+      title: 'Modifier produit',
     },
   },
 ];

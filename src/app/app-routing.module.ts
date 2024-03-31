@@ -81,6 +81,13 @@ const routes: Routes = [
             (m) => m.ProduitsModule
           ),
       },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('./views/categorie/categorie.module').then(
+            (m) => m.CategorieModule
+          ),
+      },
     ],
   },
   {

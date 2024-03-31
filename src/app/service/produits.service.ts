@@ -8,7 +8,7 @@ import { Image } from './../models/image.model';
 import { Categorie } from '../models/categorie.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  headers: new HttpHeaders({ 'Content-Type': 'Produit/json' }),
 };
 @Injectable({
   providedIn: 'root',
@@ -48,24 +48,37 @@ export class ProduitsService {
   ajouterProduits(app: Produit): Observable<Produit> {
     return this.http.post<Produit>(this.baseUrl + '/produits/addprod', app);
   }
+  consulterProduit(id: number): Observable<Produit> {
+    const url = `${this.baseUrl}/produits/getbyid/${id}`;
+    return this.http.get<Produit>(url);
+  }
+  updateProduit(app: Produit): Observable<Produit> {
+    return this.http.put<Produit>(this.baseUrl + '/produits/updateprod', app);
+  }
+  supprimerProduit(id: number) {
+    const url = `${this.baseUrl + '/produits/delprod'}/${id}`;
+    return this.http.delete(url);
+  }
 
   uploadImage(file: File, filename: string): Observable<Image> {
     const imageFormData = new FormData();
     imageFormData.append('image', file, filename);
-    const url = `${environment.apiURL + '/api/image/upload'}`;
+    const url = `${this.baseUrl + '/image/upload'}`;
     return this.http.post<Image>(url, imageFormData);
   }
 
   loadImage(id: number): Observable<Image> {
-    const url = `${environment.apiURL + '/api/image/get/info'}/${id}`;
-    return this.http.get<Image>(url, {
-      headers: { Accept: 'application/json' },
-    });
+    const url = `${this.baseUrl + '/image/get/info'}/${id}`;
+    return this.http.get<Image>(url, httpOptions);
   }
   listeCategories(): Observable<Categorie[]> {
     return this.http.get(`${this.baseUrl + '/categorie/all'}`).pipe(
       map((response) => this.handleResponse<Categorie[]>(response)),
       catchError((error) => this.handleError(error))
     );
+  }
+  supprimerCategorie(id: number) {
+    const url = `${this.baseUrl + '/categorie/del'}/${id}`;
+    return this.http.delete(url);
   }
 }

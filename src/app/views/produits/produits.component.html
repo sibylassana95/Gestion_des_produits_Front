@@ -62,10 +62,10 @@
               <td><img class="card-img-top img-responsive" src="{{produit.imageStr}}" style="height :50px;width:100px">
               </td>
 
-              <td><a routerLink="/produits/add-produits"><svg [cIcon]="icons.cilPlus" size="xl" color="info"
-                    title="plus"></svg></a>
-                <a href=""><svg [cIcon]="icons.cilPen" size="xl" title="plus"></svg></a>
-                <a href=""><svg [cIcon]="icons.cilTrash" size="xl" title="plus"></svg></a>
+              <td>
+                <a [routerLink]="['/produits/update',produit.idProduits]"><svg [cIcon]="icons.cilPen" size="xl"
+                    title="pen"></svg></a>
+                <a (click)="supprimerProduit(produit)"><svg [cIcon]="icons.cilTrash" size="xl" title="trash"></svg></a>
 
               </td>
             </tr>

@@ -1,0 +1,37 @@
+<c-card class="p-4 mb-4">
+  <form cForm class="row g-3" (ngSubmit)="updateProduit()">
+    <c-col md="6">
+      <label cLabel for="nomProduits">Nom du Produit</label>
+      <input cFormControl [(ngModel)]="currentProduit.nomProduits" id="nomProduits" name="nomProduits" type="text"
+        class="form-control rounded-pill" />
+    </c-col>
+    <c-col md="6">
+      <label cLabel for="prixProduits">Prix du Produit</label>
+      <input cFormControl [(ngModel)]="currentProduit.prixProduits" id="prixProduits" name="prixProduits" type="number"
+        class="form-control rounded-pill" />
+    </c-col>
+    <c-col xs="6">
+      <label cLabel for="dateCreation">Date de Création</label>
+      <input cFormControl [(ngModel)]="currentProduit.dateCreation" id="dateCreation" type="date" name="dateCreation"
+        class="form-control rounded-pill" />
+    </c-col>
+    <c-col xs="6">
+      <label cLabel for="image">Image du Produit</label>
+      <input cFormControl id="image" name="image" type="file" (change)="onImageUpload($event)" class="form-control" />
+    </c-col>
+    <c-col xs="6">
+      <label>Catégorie</label>
+      <select aria-label="Catégorie" cSelect id="idCat" name="idCat" [(ngModel)]="newIdCat" formControlName="idCat"
+        class="form-control rounded-pill">
+        <option *ngFor="let cat of categories" [value]="cat.idCat">
+          {{cat.nomCat}}
+        </option>
+      </select>
+    </c-col>
+    <c-col xs="12" class="d-flex justify-content-end">
+      <button cButton type="submit" color="primary" class="btn btn-primary rounded-pill">Modifier</button>
+      <button cButton type="button" color="danger" routerLink="/produits"
+        class="btn btn-danger rounded-pill ms-2">Annuler</button>
+    </c-col>
+  </form>
+</c-card>

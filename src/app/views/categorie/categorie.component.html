@@ -1,0 +1,46 @@
+<c-row>
+  <c-col xs>
+
+    <c-card class="mb-4">
+      <c-card-header>Listes des Categories
+      </c-card-header>
+      <c-card-body>
+
+        <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+          <thead cTableColor="light">
+            <tr>
+
+
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produit of categories; index as i">
+
+
+              <td>
+                <div>{{ produit.nomCat }}</div>
+
+              </td>
+              <td>
+                <div>{{ produit.descriptionCat }}</div>
+
+              </td>
+
+
+              <td>
+                <a [routerLink]="['/produits/update',produit.idCat]"><svg [cIcon]="icons.cilPen" size="xl"
+                    title="pen"></svg></a>
+                <a (click)="supprimerCategorie(produit)"><svg [cIcon]="icons.cilTrash" size="xl"
+                    title="trash"></svg></a>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

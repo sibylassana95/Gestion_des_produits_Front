@@ -20,4 +20,22 @@ export const navItems: INavData[] = [
     url: '/produits',
     iconComponent: { name: 'cil-tags' },
   },
+  {
+    name: 'Ajouter un produit',
+    url: '/produits/add',
+  },
+
+  {
+    title: true,
+    name: 'Categorie',
+  },
+  {
+    name: 'Categorie',
+    url: '/categories',
+    iconComponent: { name: 'cil-tags' },
+  },
+  {
+    name: 'Ajouter un categorie',
+    url: '/categories/add',
+  },
 ];

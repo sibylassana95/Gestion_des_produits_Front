@@ -5,6 +5,7 @@ import { Image } from '../../models/image.model';
 import { freeSet } from '@coreui/icons';
 import { TotalProduitsService } from '../../service/total-produits.service';
 import { Categorie } from 'src/app/models/categorie.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-produits',
@@ -18,20 +19,14 @@ export class ProduitsComponent implements OnInit {
   totalProduits: number = 0;
   totalcategories: number = 0;
 
-  datawigets: any[] = [];
-  options: any[] = [];
-
-  constructor(
-    private produitService: ProduitsService,
-    private totalProduitsService: TotalProduitsService
-  ) {}
+  constructor(private produitService: ProduitsService) {}
 
   ngOnInit(): void {
-    this.chargerApplication();
+    this.chargerProduit();
     this.chargerCategorie();
   }
 
-  chargerApplication() {
+  chargerProduit() {
     this.produitService.getAllProduits().subscribe((produits) => {
       this.data = produits;
 
@@ -52,6 +47,24 @@ export class ProduitsComponent implements OnInit {
     this.produitService.listeCategories().subscribe((produits) => {
       this.categories = produits;
       this.totalcategories = this.categories.length;
+    });
+  }
+  supprimerProduit(app: Produit) {
+    let conf = Swal.fire({
+      title: 'Etes-vous sûr ?',
+      showCancelButton: true,
+      confirmButtonText: 'Oui',
+      cancelButtonText: 'Non',
+      icon: 'info',
+    });
+
+    conf.then((result) => {
+      if (result.isConfirmed) {
+        this.produitService.supprimerProduit(app.idProduits).subscribe(() => {
+          this.chargerProduit();
+          window.location.reload();
+        });
+      }
     });
   }
 }

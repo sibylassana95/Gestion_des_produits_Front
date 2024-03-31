@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { freeSet } from '@coreui/icons';
 
 interface IUser {
   name: string;
@@ -23,7 +24,7 @@ interface IUser {
 })
 export class DashboardComponent implements OnInit {
   constructor(private chartsData: DashboardChartsData) {}
-
+  icons = freeSet;
   public users: IUser[] = [
     {
       name: 'Yiorgos Avraamu',

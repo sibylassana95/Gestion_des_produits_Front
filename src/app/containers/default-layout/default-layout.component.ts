@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { navItems } from './_nav';
+import { freeSet } from '@coreui/icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,6 @@ import { navItems } from './_nav';
   styleUrls: ['./default-layout.component.scss'],
 })
 export class DefaultLayoutComponent {
-
   public navItems = navItems;
 
   constructor() {}
