@@ -91,4 +91,9 @@ export class ProduitsService {
   updateCategorie(app: Categorie): Observable<Categorie> {
     return this.http.put<Categorie>(this.baseUrl + '/categorie/update', app);
   }
+
+  getProductsByCategory(id: number): Observable<Produit> {
+    const url = `${this.baseUrl}/produits/prodscat/${id}`;
+    return this.http.get<Produit>(url);
+  }
 }
