@@ -21,6 +21,10 @@
     <input type="text" class="form-control" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm">
   </c-col>
 </c-row>
+<div class="d-grid gap-2 d-md-block mb-2">
+  <button (click)="exportToExcel()" cButton color="secondary" variant="outline">Xlsx</button> &nbsp;
+  <button (click)="exportToPdf()" cButton color="secondary" variant="outline">Pdf</button>&nbsp;
+</div>
 <c-row>
   <c-col xs>
     <c-card class="mb-4">
@@ -32,7 +36,14 @@
           <thead cTableColor="light">
             <tr>
 
-              <th>Nom produit</th>
+              <th>Nom produit
+                <span (click)="toggleSortOrder()" style="cursor: pointer;">
+                  <svg *ngIf="sortOrder === 'asc'" [cIcon]="icons.cilArrowBottom" size="md"
+                    title="Sort Ascending"></svg>
+                  <svg *ngIf="sortOrder === 'desc'" [cIcon]="icons.cilArrowTop" size="md" title="Sort Descending"></svg>
+                </span>
+              </th>
+              <th>Quantite</th>
               <th>Prix</th>
               <th>Date d'ajout</th>
               <th>Image</th>
@@ -41,19 +52,17 @@
           </thead>
           <tbody>
             <tr *ngFor="let produit of filteredData(); index as i">
-
-
               <td>
                 <div>{{ produit.nomProduits }}</div>
-
               </td>
               <td>
-                <div>{{ produit.prixProduits }}</div>
-
+                <div>{{ produit.quantite }}</div>
+              </td>
+              <td>
+                <div>{{ produit.prixProduits|number }}</div>
               </td>
               <td>
                 <div>{{ produit.dateCreation}}</div>
-
               </td>
               <td><img class="card-img-top img-responsive" src="{{produit.imageStr}}" style="height :50px;width:100px">
               </td>

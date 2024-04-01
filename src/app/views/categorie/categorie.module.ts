@@ -16,7 +16,7 @@ import {
   TabsModule,
   WidgetModule,
 } from '@coreui/angular';
-
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
@@ -63,5 +63,6 @@ import { UpdateCategorieComponent } from './update-categorie/update-categorie.co
     ProgressModule,
     ChartjsModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class CategorieModule {}

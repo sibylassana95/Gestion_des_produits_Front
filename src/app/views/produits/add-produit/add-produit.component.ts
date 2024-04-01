@@ -21,6 +21,7 @@ export class AddProduitComponent implements OnInit {
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       nomProduits: ['', [Validators.required]],
+      quantite: ['', [Validators.required]],
       prixProduits: ['', [Validators.required]],
       dateCreation: ['', [Validators.required]],
       image: ['', [Validators.required]],

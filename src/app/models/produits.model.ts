@@ -4,6 +4,7 @@ export class Produit {
   idProduits!: number;
   nomProduits!: string;
   prixProduits!: number;
+  quantite!: number;
   dateCreation!: Date;
   image!: Image;
   imageStr!: string;

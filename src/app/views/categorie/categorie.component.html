@@ -1,46 +1,54 @@
 <c-row class="mb-4">
   <c-col sm="4" xl="3">
-    <input type="text" class="form-control" placeholder="Rechercher une categorie..." [(ngModel)]="searchTerm">
+    <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Rechercher une categorie...">
   </c-col>
 </c-row>
+<div class="d-grid gap-2 d-md-block mb-2">
+  <button (click)="exportToExcel()" cButton color="secondary" variant="outline">Xlsx</button> &nbsp;
+  <button (click)="exportToPdf()" cButton color="secondary" variant="outline">Pdf</button>&nbsp;
+</div>
+
 <c-row>
   <c-col xs>
     <c-card class="mb-4">
-      <c-card-header>Listes des Categories
+      <c-card-header>
+        Listes des Categories
       </c-card-header>
       <c-card-body>
-
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
           <thead cTableColor="light">
             <tr>
-
-
-              <th>Nom</th>
+              <th>
+                Nom
+                <span (click)="toggleSortOrder()" style="cursor: pointer;">
+                  <svg *ngIf="sortOrder === 'asc'" [cIcon]="icons.cilArrowBottom" size="md"
+                    title="Sort Ascending"></svg>
+                  <svg *ngIf="sortOrder === 'desc'" [cIcon]="icons.cilArrowTop" size="md" title="Sort Descending"></svg>
+                </span>
+              </th>
               <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let produit of filteredData(); index as i">
-
-
-
               <td>
-                <div>{{ produit.nomCat }}</div>
-
+                <div>
+                  {{ produit.nomCat }}
+                </div>
               </td>
               <td>
-                <div>{{ produit.descriptionCat }}</div>
-
+                <div>
+                  {{ produit.descriptionCat }}
+                </div>
               </td>
-
-
               <td>
-                <a [routerLink]="['/categories/update',produit.idCat]"><svg [cIcon]="icons.cilPen" size="xl"
-                    title="pen"></svg></a>
-                <a (click)="supprimerCategorie(produit)"><svg [cIcon]="icons.cilTrash" size="xl"
-                    title="trash"></svg></a>
-
+                <a [routerLink]="['/categories/update',produit.idCat]">
+                  <svg [cIcon]="icons.cilPen" size="xl" title="pen"></svg>
+                </a>
+                <a (click)="supprimerCategorie(produit)">
+                  <svg [cIcon]="icons.cilTrash" size="xl" title="trash"></svg>
+                </a>
               </td>
             </tr>
           </tbody>

@@ -6,6 +6,11 @@
         class="form-control rounded-pill" />
     </c-col>
     <c-col md="6">
+      <label cLabel for="quantite">Quantité</label>
+      <input cFormControl [(ngModel)]="currentProduit.quantite" id="quantite" name="quantite" type="number"
+        class="form-control rounded-pill" />
+    </c-col>
+    <c-col md="6">
       <label cLabel for="prixProduits">Prix du Produit</label>
       <input cFormControl [(ngModel)]="currentProduit.prixProduits" id="prixProduits" name="prixProduits" type="number"
         class="form-control rounded-pill" />
