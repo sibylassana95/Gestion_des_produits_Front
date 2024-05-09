@@ -18,7 +18,7 @@ export const updateProfilGuard: CanActivateFn = (
 
   if (authService.isloggedIn) return true;
   else {
-    router.navigate(['app-404']);
+    router.navigate(['login']);
     return false;
   }
 };

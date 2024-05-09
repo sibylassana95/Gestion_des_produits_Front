@@ -18,7 +18,7 @@ export const applicationGuard: CanActivateFn = (
 
   if ((authService.isloggedIn, authService.isAdmin())) return true;
   else {
-    router.navigate(['app-404']);
+    router.navigate(['404']);
     return false;
   }
 };
