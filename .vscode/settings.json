@@ -1,0 +1,5 @@
+{
+    "files.autoSaveDelay": 600000,
+    "files.refactoring.autoSave": true,
+    "files.autoSave": "afterDelay"
+}
