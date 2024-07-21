@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiURL: 'https://gestion-des-produits-backend.onrender.com',
+  apiURL: 'http://localhost:8080',
   allowCredentials: true,
 };
